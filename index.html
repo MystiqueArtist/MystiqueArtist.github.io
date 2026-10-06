@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#07040d">
+<title>Mystique Artist&rsquo;s Art Cave</title>
+<meta name="description" content="Drawings by Mystique Artist.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🌙%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600&family=Rubik+Scribble&display=swap" rel="stylesheet">
+<style>
+:root{--void:#07040d;--cave:#1b0a38;--glow:120,70,210;--moon:#efe6ff;--dim:#a98be0;--pink:#ff6fb5;--run:.8s}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--void);color:rgba(239,230,255,.82);font:400 1.05rem/1.6 "Figtree",system-ui,sans-serif}
+body:has(dialog[open]){overflow:hidden}
+:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
+
+/* 1. Opening: the running girl */
+.hero{min-height:100vh;min-height:100svh;display:grid;grid-template-rows:1fr auto;justify-items:center;align-items:center;padding:1.5rem 1rem 1.25rem;background:radial-gradient(ellipse 55% 42% at 50% 50%,rgba(var(--glow),.5),transparent 72%),linear-gradient(var(--void),var(--cave))}
+.run{width:min(94vw,640px);height:auto;overflow:visible}
+.ink{fill:none;stroke:var(--c,var(--moon));stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+.far{--c:var(--dim)}
+.thin{stroke-width:2.2;opacity:.7}
+.ground,.speed{fill:none;stroke:var(--dim);stroke-width:3;stroke-linecap:round}
+.ground{stroke-dasharray:22 12 6 12;animation:ground .5s steps(4) infinite}
+.speed path{animation:speed .6s steps(5) infinite}
+.speed path:nth-child(2){animation-delay:-.2s}
+.speed path:nth-child(3){animation-delay:-.4s}
+.runin{animation:runin 1.7s cubic-bezier(.15,.7,.25,1) both}
+.bob{animation:bob calc(var(--run)/2) steps(1,end) infinite}
+.th{transform-origin:232px 196px;animation:thigh var(--run) steps(1,end) infinite}
+.sh{transform-origin:232px 246px;animation:shin var(--run) steps(1,end) infinite}
+.up{transform-origin:247px 140px;animation:arm var(--run) steps(1,end) infinite}
+.fo{transform-origin:247px 170px;animation:fore var(--run) steps(1,end) infinite}
+.hair{transform-origin:234px 98px;animation:hair calc(var(--run)/2) steps(1,end) infinite}
+.skirt{transform-origin:238px 185px;animation:skirt calc(var(--run)/2) steps(1,end) infinite}
+.d,.d *{animation-delay:calc(var(--run)/-2)}
+.cue{display:grid;justify-items:center;gap:.25rem;color:var(--moon);font-size:.95rem;text-decoration:none;opacity:0;animation:appear .8s 2.2s forwards,nudge 1.6s 3s ease-in-out infinite}
+.cue svg{width:1.5rem;height:2.4rem}
+
+@keyframes thigh{0%{transform:rotate(-38deg)}12.5%{transform:rotate(-28deg)}25%{transform:rotate(-3deg)}37.5%{transform:rotate(22deg)}50%{transform:rotate(32deg)}62.5%{transform:rotate(22deg)}75%{transform:rotate(-3deg)}87.5%{transform:rotate(-28deg)}100%{transform:rotate(-38deg)}}
+@keyframes shin{0%{transform:rotate(12deg)}12.5%{transform:rotate(18deg)}25%{transform:rotate(25deg)}37.5%{transform:rotate(40deg)}50%{transform:rotate(70deg)}62.5%{transform:rotate(105deg)}75%{transform:rotate(95deg)}87.5%{transform:rotate(55deg)}100%{transform:rotate(12deg)}}
+@keyframes arm{0%{transform:rotate(-50deg)}12.5%{transform:rotate(-37deg)}25%{transform:rotate(-5deg)}37.5%{transform:rotate(27deg)}50%{transform:rotate(40deg)}62.5%{transform:rotate(27deg)}75%{transform:rotate(-5deg)}87.5%{transform:rotate(-37deg)}100%{transform:rotate(-50deg)}}
+@keyframes fore{0%{transform:rotate(-95deg)}12.5%{transform:rotate(-92deg)}25%{transform:rotate(-85deg)}37.5%{transform:rotate(-78deg)}50%{transform:rotate(-70deg)}62.5%{transform:rotate(-78deg)}75%{transform:rotate(-85deg)}87.5%{transform:rotate(-92deg)}100%{transform:rotate(-95deg)}}
+@keyframes bob{0%{transform:translateY(0)}25%{transform:translateY(-5px)}50%{transform:translateY(-8px)}75%{transform:translateY(-4px)}100%{transform:translateY(0)}}
+@keyframes hair{0%{transform:rotate(0)}25%{transform:rotate(6deg)}50%{transform:rotate(-2deg)}75%{transform:rotate(7deg)}100%{transform:rotate(0)}}
+@keyframes skirt{0%{transform:rotate(0)}25%{transform:rotate(3deg)}50%{transform:rotate(6deg)}75%{transform:rotate(2deg)}100%{transform:rotate(0)}}
+@keyframes runin{from{transform:translateX(-130%)}to{transform:none}}
+@keyframes ground{to{stroke-dashoffset:52}}
+@keyframes speed{0%{transform:translateX(34px);opacity:0}30%{opacity:.85}100%{transform:translateX(-34px);opacity:0}}
+@keyframes appear{to{opacity:1}}
+@keyframes nudge{50%{transform:translateY(7px)}}
+
+/* 2. Welcome */
+.welcome{padding:min(24vh,12rem) 1.25rem min(14vh,8rem);text-align:center;background:radial-gradient(ellipse 70% 55% at 50% 42%,rgba(var(--glow),.34),transparent 72%),linear-gradient(var(--cave),#0a0512)}
+h1{margin:0 auto;max-width:20em;font:400 clamp(2.5rem,9.5vw,5.75rem)/1.08 "Rubik Scribble","Marker Felt","Comic Sans MS",cursive;color:var(--moon);text-wrap:balance;text-shadow:0 0 36px rgba(var(--glow),.7)}
+.welcome p{margin:1.6rem auto 0;max-width:30rem;font-size:1.15rem}
+
+/* 3. Gallery */
+.room{padding:2rem 0 3rem;background:linear-gradient(#0a0512,#170a2e)}
+.gallery{max-width:78rem;margin:0 auto;padding:0 1rem;columns:17rem;column-gap:1rem}
+.gallery figure{margin:0 0 1rem;break-inside:avoid}
+.pic{display:block;width:100%;padding:0;border:1px solid rgba(190,160,255,.28);border-radius:8px;overflow:hidden;background:#12081f;box-shadow:0 10px 30px rgba(0,0,0,.45);cursor:zoom-in;transition:border-color .2s}
+.pic:hover{border-color:rgba(190,160,255,.75)}
+.pic img{display:block;width:100%;height:auto}
+.empty{column-span:all;text-align:center;opacity:.8}
+
+footer{padding:2.5rem 1rem 3rem;text-align:center;font-size:.95rem;background:linear-gradient(#170a2e,var(--void))}
+footer a{color:var(--moon);text-decoration-color:var(--pink);text-underline-offset:.25em}
+
+/* Full-size viewer */
+dialog{width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:rgba(7,4,13,.94);color:var(--moon)}
+dialog[open]{display:grid;place-items:center}
+dialog figure{margin:0;display:grid;gap:.75rem;justify-items:center;text-align:center}
+dialog img{max-width:min(92vw,1200px);max-height:80vh;max-height:80dvh;object-fit:contain;border-radius:6px}
+dialog figcaption:empty{display:none}
+dialog button{position:fixed;display:grid;place-items:center;width:3rem;height:3rem;padding:0 0 .2rem;border:1px solid rgba(190,160,255,.35);border-radius:50%;background:rgba(27,10,56,.85);color:var(--moon);font:400 1.8rem/1 "Figtree",sans-serif;cursor:pointer}
+.close{top:1rem;right:1rem}
+.prev,.next{top:50%;margin-top:-1.5rem}
+.prev{left:.75rem}
+.next{right:.75rem}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .runin,.ground,.speed path{animation:none}
+  .cue{animation:none;opacity:1}
+  .bob,.th,.sh,.up,.fo,.hair,.skirt{animation-play-state:paused}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <svg class="run" viewBox="0 0 480 330" role="img" aria-label="A sketched girl running">
+    <defs>
+      <filter id="wob" x="-8%" y="-8%" width="116%" height="116%">
+        <feTurbulence id="turb" type="fractalNoise" baseFrequency=".03" numOctaves="1" seed="1" result="n"/>
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
+    </defs>
+
+    <g filter="url(#wob)">
+      <g class="speed"><path d="M138 150h-52"/><path d="M126 188h-70"/><path d="M142 226h-56"/></g>
+      <path class="ground" d="M24 300H456"/>
+    </g>
+
+    <g class="runin"><g filter="url(#wob)"><g class="bob">
+      <!-- far arm -->
+      <g class="ink far"><g class="up"><path d="M247 140v30"/><g class="fo"><path d="M247 170v28"/></g></g></g>
+      <!-- far leg -->
+      <g class="ink far d"><g class="th"><path d="M232 196v50"/><g class="sh"><path d="M232 246v50h13"/></g></g></g>
+      <!-- body -->
+      <g class="ink"><path d="M232 196L250 130" stroke-width="5.5"/><path class="thin" d="M237 192L255 127"/></g>
+      <g class="ink"><g class="skirt"><path d="M228 186L250 183L270 230Q244 240 210 232Z" stroke-width="4"/><path class="thin" d="M225 197L254 195M222 208L258 205M217 219L264 216"/></g></g>
+      <!-- head, face, fringe -->
+      <g class="ink">
+        <ellipse cx="252" cy="104" rx="20" ry="22" stroke-width="4"/>
+        <ellipse class="thin" cx="254" cy="103" rx="21" ry="21" transform="rotate(25 253 104)"/>
+        <path d="M233 99C232 80 262 74 273 94" stroke-width="4.5"/>
+        <path class="thin" d="M240 90q10-8 24-4"/>
+        <circle cx="263" cy="105" r="2" fill="#efe6ff" stroke="none"/>
+        <path class="thin" d="M262 114q4 3 8 0"/>
+        <g class="hair"><path d="M234 96C208 70 176 88 158 128"/><path d="M234 104C214 96 192 110 178 136" stroke-width="3.5"/><path class="thin" d="M230 90C206 82 188 96 180 114"/></g>
+      </g>
+      <path d="M234 96q-9-9-13-1 3 9 13 1 7-8 11-1-3 8-11 1z" fill="#ff6fb5" stroke="none"/>
+      <!-- near leg -->
+      <g class="ink"><g class="th"><path d="M232 196v50"/><g class="sh"><path d="M232 246v50h13"/></g></g></g>
+      <!-- near arm -->
+      <g class="ink d"><g class="up"><path d="M247 140v30"/><g class="fo"><path d="M247 170v28"/></g></g></g>
+    </g></g></g>
+  </svg>
+
+  <a class="cue" href="#welcome">Scroll down
+    <svg viewBox="0 0 24 38" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c3 9-3 16 0 30M4 25l8 10 8-10"/></svg>
+  </a>
+</header>
+
+<main>
+  <section class="welcome" id="welcome">
+    <h1>Welcome to Mystique Artist&rsquo;s Art Cave</h1>
+    <p>Step inside and take a look around. Tap or click any drawing to see it bigger.</p>
+  </section>
+
+  <section class="room">
+    <div id="gallery" class="gallery"></div>
+  </section>
+</main>
+
+<footer>
+  &copy; <span id="yr">2026</span> Mystique Artist.
+  <!-- EDIT: replace the link below with her Pinterest profile link -->
+  <a href="https://www.pinterest.com/" rel="noopener">Find more drawings on Pinterest</a>
+</footer>
+
+<dialog id="viewer" aria-label="Drawing viewer">
+  <button class="close" type="button" aria-label="Close">&times;</button>
+  <button class="prev" type="button" aria-label="Previous drawing">&lsaquo;</button>
+  <figure><img alt=""><figcaption></figcaption></figure>
+  <button class="next" type="button" aria-label="Next drawing">&rsaquo;</button>
+</dialog>
+
+<script>
+// ---- EDIT THESE ------------------------------------------------
+const COUNT = 40;     // at least as many as her drawings (extra numbers are ignored)
+const EXT   = "jpg";  // image type. Files go in the "images" folder: drawing-01.jpg, drawing-02.jpg, ...
+const TITLES = {      // optional names, for example:  1: "Moonlit fox", 2: "Self portrait"
+};
+// ----------------------------------------------------------------
+
+const $ = s => document.querySelector(s);
+const gal = $("#gallery"), dlg = $("#viewer"), big = dlg.querySelector("img"), cap = dlg.querySelector("figcaption");
+let list = [], at = 0, left = COUNT, shown = 0;
+
+function settle(ok) {
+  shown += ok;
+  if (!--left && !shown) gal.innerHTML = '<p class="empty">No drawings yet. Put your images in the images folder and name them drawing-01.jpg, drawing-02.jpg, and so on.</p>';
+}
+
+for (let i = 1; i <= COUNT; i++) {
+  const slot = document.createElement("figure"), img = new Image();
+  slot.hidden = true;
+  gal.append(slot);
+  img.onload = () => {
+    const b = document.createElement("button");
+    b.className = "pic";
+    b.type = "button";
+    b.setAttribute("aria-label", "View " + (TITLES[i] || "drawing " + i));
+    img.alt = TITLES[i] || "Drawing " + i;
+    img.dataset.t = TITLES[i] || "";
+    b.append(img);
+    slot.append(b);
+    slot.hidden = false;
+    settle(1);
+  };
+  img.onerror = () => { slot.remove(); settle(0); };
+  img.src = "images/drawing-" + String(i).padStart(2, "0") + "." + EXT;
+}
+
+function show(n) {
+  at = (n + list.length) % list.length;
+  const im = list[at];
+  big.src = im.src;
+  big.alt = im.alt;
+  cap.textContent = im.dataset.t;
+}
+
+gal.addEventListener("click", e => {
+  const b = e.target.closest(".pic");
+  if (!b) return;
+  list = [...gal.querySelectorAll("figure:not([hidden]) img")];
+  show(list.indexOf(b.firstElementChild));
+  dlg.showModal();
+});
+dlg.querySelector(".close").onclick = () => dlg.close();
+dlg.querySelector(".prev").onclick = () => show(at - 1);
+dlg.querySelector(".next").onclick = () => show(at + 1);
+dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+dlg.addEventListener("keydown", e => {
+  if (e.key === "ArrowRight") show(at + 1);
+  if (e.key === "ArrowLeft") show(at - 1);
+});
+let x0 = 0;
+dlg.addEventListener("touchstart", e => { x0 = e.changedTouches[0].clientX; }, { passive: true });
+dlg.addEventListener("touchend", e => {
+  const dx = e.changedTouches[0].clientX - x0;
+  if (Math.abs(dx) > 50) show(at + (dx < 0 ? 1 : -1));
+});
+
+$("#yr").textContent = new Date().getFullYear();
+
+// the "boiling pencil line" wobble on the running girl
+if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  const t = $("#turb");
+  let s = 1;
+  setInterval(() => t.setAttribute("seed", (s = s % 9 + 1)), 110);
+}
+</script>
+</body>
+</html>
